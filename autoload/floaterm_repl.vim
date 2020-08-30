@@ -4,6 +4,7 @@ function! floaterm_repl#run() range
     let l:filetype= &filetype
     let l:filerunner=s:scriptdir.'/terminal_preview.sh'
     let l:args=''
+    let l:filepath=''
     if !empty(g:floaterm_repl_runner)
       let l:filerunner=g:floaterm_repl_runner
     endif
@@ -22,6 +23,7 @@ function! floaterm_repl#run() range
             if len(splitHeadder) >0
                 let l:filetype=splitHeadder[0]
             end
+
             let l:args=join(splitHeadder[1:-1])
             let l:filepath='/tmp/vim_floaterm.'.l:filetype
             let w= system("echo " .shellescape(query)." > " .l:filepath )
@@ -33,12 +35,13 @@ function! floaterm_repl#run() range
 
     silent execute ':FloatermKill! repl'
 
-    let l:command=':FloatermNew --name=repl --position=bottom --autoclose=0 --height=0.4 --width=0.9 '
-    let l:command= l:command. printf(" %s %s %s %s",l:filerunner,l:filetype,l:filepath,l:args)
+    if len(l:filetype)>0 && !empty(l:filepath)
+        let l:command=':FloatermNew --name=repl --position=bottom --autoclose=0 --height=0.4 --width=0.9 '
+        let l:command= l:command. printf(" %s %s %s %s",l:filerunner,l:filetype,l:filepath,l:args)
+        silent execute l:command
+        stopinsert
+    endif
 
-    silent execute l:command
-            
-    stopinsert
 
 endfunction
 
