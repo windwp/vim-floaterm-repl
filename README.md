@@ -3,7 +3,11 @@ Run repl code in the floating/popup window.
 ![markdown](./screenshot/markdown_demo.gif)
 
 # Install
+
+This plugin depend on [vim-floaterm](https://github.com/voldikss/vim-floaterm) you need to install it first
+
 using vim-plug
+
 ``` vim
 Plug 'voldikss/vim-floaterm'
 Plug 'windwp/vim-floaterm-repl'
