@@ -1,6 +1,6 @@
 # 
 Run repl code in the floating/popup window.
-
+![markdown](./screenshot/markdown_demo.gif)
 
 # Install
 using vim-plug
