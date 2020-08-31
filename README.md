@@ -1,6 +1,7 @@
 # 
 Run repl code in the floating/popup window.
 
+### demo
 ![markdown](./screenshot/markdown_demo.gif)
 
 # Install
@@ -20,17 +21,14 @@ Plug 'windwp/vim-floaterm-repl'
 
 * run a block code in markdown file with argument passing
   > - Put cursors in codeblock and run :FloatermRepl (you don't need to select it).
-  > - Passing argument to script in codeheader [pic][markdown]
-
-  [markdown]:http://www.url.com "http://www.url.com"
-
+  > - Passing argument to script in codeheader [see](#demo) 
 
 ## Key map
 ``` vim
 nnoremap <leader>uc :FloatermRepl<CR>
 vnoremap <leader>uc :FloatermRepl<CR>
 ```
- Press `<ESC>` to exit in floaterm window
+ Press `<ESC>` or `q` to exit in floaterm window
 
 ## Configuration
 
@@ -73,5 +71,3 @@ esac
 echo "====================="
 
  ```
-
-Use can press `q` to exit in floaterm window
