@@ -28,7 +28,14 @@ function! floaterm_repl#run() range
             let l:filepath='/tmp/vim_floaterm.'.l:filetype
             let w= system("echo " .shellescape(query)." > " .l:filepath )
         endif 
-    else
+    else 
+        let [line_start, column_start] = getpos("'<")[1:2]
+        let [line_end, column_end] = getpos("'>")[1:2]
+        let lines = getline(line_start, line_end)
+        if len(lines) == 0
+            echo "You need select code."
+            return ''
+        endif
         let l:filepath='/tmp/vim_floaterm.'.l:filetype
         silent execute "\'<,\'>w! " . l:filepath
     endif 
@@ -36,7 +43,7 @@ function! floaterm_repl#run() range
     silent execute ':FloatermKill! repl'
 
     if len(l:filetype)>0 && !empty(l:filepath)
-        let l:command=':FloatermNew --name=repl --position=bottom --autoclose=0 --height=0.4 --width=0.9 '
+        let l:command=':FloatermNew --name=repl --position=bottom --autoclose=0 --height=0.4 --width=0.9 --title='.filetype
         let l:command= l:command. printf(" %s %s %s %s",l:filerunner,l:filetype,l:filepath,l:args)
         silent execute l:command
         stopinsert

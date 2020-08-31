@@ -1,5 +1,6 @@
 # 
 Run repl code in the floating/popup window.
+
 ![markdown](./screenshot/markdown_demo.gif)
 
 # Install
@@ -15,7 +16,14 @@ Plug 'windwp/vim-floaterm-repl'
 
 # Usage
 * run a part of code in script file
+  > - Select code and run :FloatermRepl 
+
 * run a block code in markdown file with argument passing
+  > - Put cursors in codeblock and run :FloatermRepl (you don't need to select it).
+  > - Passing argument to script in codeheader [pic][markdown]
+
+  [markdown]:http://www.url.com "http://www.url.com"
+
 
 ## Key map
 ``` vim
