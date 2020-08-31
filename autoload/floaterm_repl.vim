@@ -47,8 +47,8 @@ endfunction
 
 
 function! s:setupfloaterm_popup() abort
-    nmap<buffer> q :q<CR>
-    nmap<buffer> <ESC> :q<CR>
+    nmap <silent><buffer> q :q<CR>
+    nmap <silent><buffer> <ESC> :q<CR>
 endfunction
 
 augroup floatermrepl
