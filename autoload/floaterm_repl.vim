@@ -40,12 +40,12 @@ function! floaterm_repl#run() range
         silent execute "\'<,\'>w! " . l:filepath
     endif 
 
-    silent execute ':FloatermKill! repl'
+    " silent execute ':FloatermKill! repl'
 
     if len(l:filetype)>0 && !empty(l:filepath)
-        let l:command=':FloatermNew --name=repl --position=bottom --autoclose=0 --height=0.4 --width=0.9 --title='.filetype
+        let l:command=':FloatermNew '
         let l:command= l:command. printf(" %s %s %s %s",l:filerunner,l:filetype,l:filepath,l:args)
-        silent execute l:command
+        execute l:command
         stopinsert
     endif
 
@@ -54,6 +54,7 @@ endfunction
 
 
 function! s:setupfloaterm_popup() abort
+  echom "AAA"
     nmap <silent><buffer> q :q<CR>
     nmap <silent><buffer> <ESC> :q<CR>
 endfunction
@@ -61,7 +62,7 @@ endfunction
 augroup floatermrepl
   " Remove all vimrc autocommands
     autocmd!
-    autocmd FileType floaterm call <SID>setupfloaterm_popup()
+    autocmd FileType Floaterm call <SID>setupfloaterm_popup()
 augroup END
 
 
